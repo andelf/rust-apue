@@ -1,15 +1,13 @@
 // List 1-2
+// List 3-3
 extern crate apue;
 extern crate libc;
 
-use std::mem;
+use apue::unistd::*;
 use libc::{
     c_char,
     size_t,
-    read,
-    write,
-    STDIN_FILENO,
-    STDOUT_FILENO
+    c_void
 };
 
 const BUFFSIZE: usize = 4096;
@@ -21,9 +19,9 @@ fn main() {
     let mut n;
     unsafe {
         loop {
-            n = read(STDIN_FILENO, mem::transmute(&mut buf), BUFFSIZE as size_t);
+            n = read(STDIN_FILENO, &mut buf[0] as *mut c_char as *mut c_void, BUFFSIZE as size_t);
             if n > 0 {
-                if write(STDOUT_FILENO, mem::transmute(&buf), n as size_t) != n {
+                if write(STDOUT_FILENO, &buf[0] as *const c_char as *const c_void, n as size_t) != n {
                     panic!("write error");
                 }
             } else {
