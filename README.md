@@ -8,8 +8,8 @@ Programs from the APUE Book(Advanced Programming in the UNIX® Environment).
 
 ## Progress
 
-- [x]: Chapter 1: intro
-- [ ]: Chapter 2
+- [x] Chapter 1: intro
+- [ ] Chapter 2
 - ...
 
 ## List
