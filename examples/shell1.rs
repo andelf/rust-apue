@@ -2,7 +2,6 @@
 extern crate apue;
 extern crate libc;
 
-use std::mem;
 use std::ptr;
 use std::io::prelude::*;
 use std::io;
@@ -17,7 +16,6 @@ use libc::{
     waitpid,
     c_char,
     c_int,
-    pid_t
 };
 
 use apue::{
@@ -35,7 +33,7 @@ extern {
 fn main() {
     let mut buf: [c_char; MAXLINE] = [0; MAXLINE];
     print!("% ");
-    io::stdout().flush();
+    io::stdout().flush().unwrap();
     unsafe {
         loop {
             if fgets(&mut buf[0], MAXLINE as c_int, stdin).is_null() {
@@ -58,14 +56,14 @@ fn main() {
                 }
             }
             // parent
-            let mut status = 0;
+            let status = 0;
             pid = waitpid(pid, &status, 0);
             if pid < 0 {
                 panic!("waitpid error");
             }
 
             print!("% ");
-            io::stdout().flush();
+            io::stdout().flush().unwrap();
         }
     }
 }
