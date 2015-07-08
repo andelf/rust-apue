@@ -6,6 +6,12 @@ Programs from the APUE Book(Advanced Programming in the UNIX® Environment).
 
 [Book Site]([http://www.apuebook.com/])
 
+## Progress
+
+- [x]: Chapter 1: intro
+- [ ]: Chapter 2
+- ...
+
 ## List
 
 ```
