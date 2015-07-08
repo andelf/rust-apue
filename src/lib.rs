@@ -6,13 +6,8 @@ extern crate libc;
 
 pub const MAXLINE: usize = 4096;
 
-pub use libc::consts::os::posix88::{
-    STDIN_FILENO,
-    STDOUT_FILENO,
-    STDERR_FILENO
-};
 
-pub use libc::funcs::posix88::unistd::*;
+// pub use libc::funcs::posix88::unistd::*;
 
 
 
@@ -28,6 +23,26 @@ pub fn errno() -> libc::c_int {
     unsafe {
         *errnop()
     }
+}
+
+
+
+pub mod fcntl {
+    pub use libc::funcs::posix88::fcntl::{
+        open,
+        creat,
+        fcntl
+    };
+}
+
+
+pub mod unistd {
+    pub use libc::funcs::posix88::unistd::*;
+    pub use libc::consts::os::posix88::{
+        STDIN_FILENO,
+        STDOUT_FILENO,
+        STDERR_FILENO
+    };
 }
 
 #[allow(dead_code, non_camel_case_types, non_snake_case)]
@@ -61,7 +76,18 @@ pub mod dirent {
 
 
 pub mod stdio {
-    use libc::*;
+    use libc::{
+        FILE,
+        c_int,
+        fgetc,
+        fputc
+    };
+
+    pub use libc::{
+        SEEK_SET,
+        SEEK_CUR,
+        SEEK_END
+    };
 
     extern {
         #[link_name="__stdinp"]

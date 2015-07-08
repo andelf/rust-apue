@@ -3,7 +3,7 @@
 
 cargo run --example ls1 ..
 
-cargo run --example mycat < README.md
+echo "HELLO WORLD" | cargo run --example mycat
 
 echo hello | cargo run --example getcputc
 
@@ -14,3 +14,5 @@ echo date | cargo run --example shell1
 cargo run --example testerror
 
 cargo run --example uidgid
+
+cargo run --example seek
