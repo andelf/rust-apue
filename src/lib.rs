@@ -42,3 +42,25 @@ extern {
     #[link_name="readdir"]
     pub fn readdir(arg1: *mut DIR) -> *mut Struct_dirent;
 }
+
+pub mod stdio {
+    use libc::*;
+
+    extern {
+        #[link_name="__stdinp"]
+        pub static stdin: *mut FILE;
+
+        #[link_name="__stdoutp"]
+        pub static stdout: *mut FILE;
+    }
+
+    #[inline]
+    pub unsafe fn getc(stream: *mut FILE) -> c_int {
+        fgetc(stream)
+    }
+
+    #[inline]
+    pub unsafe fn putc(c: c_int, stream: *mut FILE) -> c_int {
+        fputc(c, stream)
+    }
+}
