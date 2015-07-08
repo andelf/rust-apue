@@ -19,7 +19,7 @@ use apue::{
 fn main() {
     unsafe {
         write!(io::stderr(), "EACCESS: {}\n",
-               str::from_utf8(CStr::from_ptr(strerror(*errno())).to_bytes()).unwrap()).unwrap();
+               str::from_utf8(CStr::from_ptr(strerror(errno())).to_bytes()).unwrap()).unwrap();
         perror(CString::new(env::args().next().unwrap()).unwrap().as_ptr())
     }
 }

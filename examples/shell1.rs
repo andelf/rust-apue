@@ -50,7 +50,7 @@ fn main() {
                 panic!("fork error");
             } else if pid == 0 { // child
                 execlp(&buf[0], &buf[0], ptr::null());
-                if (*errno()) != 0 {
+                if errno() != 0 {
                     println!("couldn't execute: {}", str::from_utf8(CStr::from_ptr(&buf[0]).to_bytes()).unwrap());
                     exit(127);
                 }

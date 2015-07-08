@@ -8,8 +8,7 @@ extern crate libc;
 //use libc::types::common::posix88::*;
 use std::ffi::{CString, CStr};
 use std::str;
-use apue::dirent::closedir;
-use apue::{opendir, readdir};
+use apue::dirent::{opendir, readdir, closedir};
 
 use std::env;
 
