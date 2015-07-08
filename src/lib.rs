@@ -4,8 +4,6 @@
 
 extern crate libc;
 
-
-
 pub const MAXLINE: usize = 4096;
 
 pub use libc::consts::os::posix88::{
@@ -15,6 +13,18 @@ pub use libc::consts::os::posix88::{
 };
 
 pub use libc::funcs::posix88::unistd::*;
+
+
+
+// errno
+extern {
+    #[cfg_attr(any(target_os = "macos",
+                   target_os = "ios",
+                   target_os = "freebsd"),
+               link_name = "__error")]
+    pub fn errno() -> *mut libc::c_int;
+}
+
 
 
 
