@@ -4,8 +4,13 @@
 
 extern crate libc;
 
+
+pub use libc::consts::os::posix88::*;
+
 pub const MAXLINE: usize = 4096;
 
+
+pub const FILE_MODE: libc::mode_t = (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 
 // pub use libc::funcs::posix88::unistd::*;
 

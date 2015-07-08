@@ -16,3 +16,5 @@ cargo run --example testerror
 cargo run --example uidgid
 
 cargo run --example seek
+
+cargo run --example hole
