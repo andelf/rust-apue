@@ -18,3 +18,7 @@ cargo run --example uidgid
 cargo run --example seek
 
 cargo run --example hole
+
+cargo run --example fileflags 1
+
+cargo run --example setfl
