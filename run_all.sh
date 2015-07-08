@@ -10,3 +10,5 @@ echo hello | cargo run --example getcputc
 cargo run --example hello
 
 echo date | cargo run --example shell1
+
+cargo run --example testerror
