@@ -12,3 +12,5 @@ cargo run --example hello
 echo date | cargo run --example shell1
 
 cargo run --example testerror
+
+cargo run --example uidgid
