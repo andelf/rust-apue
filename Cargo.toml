@@ -1,0 +1,20 @@
+[package]
+name = "apue"
+version = "0.1.0"
+authors = ["Shuyu Wang <andelf@gmail.com>"]
+description = "Code from the APUE book. in Rust."
+homepage = "https://github.com/andelf/rust-apue"
+repository = "https://github.com/andelf/rust-apue.git"
+keywords = [
+  "algorithm",
+  "book"
+]
+license = "MIT"
+
+[dependencies]
+nix = "*"
+libc = "*"
+
+[dependencies.bindgen_plugin]
+git = "https://github.com/crabtw/rust-bindgen.git"
+path = "bindgen_plugin"
