@@ -4,17 +4,21 @@
 
 extern crate libc;
 
-
-pub use libc::consts::os::posix88::*;
+use libc::types::os::arch::posix88::*;
+use self::s_ifmt::*;
 
 pub const MAXLINE: usize = 4096;
-
-
 pub const FILE_MODE: libc::mode_t = (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 
-// pub use libc::funcs::posix88::unistd::*;
 
 
+pub mod types {
+    pub use libc::types::os::arch::posix88::*;
+}
+
+pub mod consts {
+    pub use super::s_ifmt::*;
+}
 
 // errno
 extern {
@@ -38,16 +42,6 @@ pub mod fcntl {
         creat,
         fcntl
     };
-    pub use libc::consts::os::posix88::{
-        O_APPEND,
-        O_CREAT,
-        O_EXCL,
-        O_NOCTTY,
-        O_RDONLY,
-        O_RDWR,
-        O_TRUNC,
-        O_WRONLY
-    };
 }
 
 
@@ -64,9 +58,9 @@ pub mod unistd {
     };
 }
 
-#[allow(dead_code, non_camel_case_types, non_snake_case)]
 pub mod dirent {
     // the functions in this mod maybe linked with wrong version
+    #[allow(dead_code, non_camel_case_types, non_snake_case)]
     mod ffi {
         bindgen!("/usr/include/dirent.h", match="dirent.h");
     }
@@ -127,12 +121,13 @@ pub mod stdio {
     }
 }
 
+
+
+
 #[allow(non_snake_case, overflowing_literals)]
-pub mod stat {
-    pub use libc::funcs::posix88::stat_::*;
-    pub use libc::types::os::arch::posix01::stat;
-    pub use libc::funcs::posix01::stat_::lstat;
-    pub use libc::types::os::arch::posix88::mode_t;
+mod s_ifmt {
+    use libc::types::os::arch::posix88::mode_t;
+
     pub use libc::consts::os::posix88::{
         S_IEXEC,
         S_IFBLK,
@@ -159,6 +154,25 @@ pub mod stat {
     };
 
     pub const S_IFSOCK: mode_t = 0140000;
+}
+
+#[allow(non_snake_case, overflowing_literals)]
+pub mod stat {
+    pub use libc::funcs::posix88::stat_::*;
+    pub use libc::types::os::arch::posix01::stat;
+    pub use libc::funcs::posix01::stat_::lstat;
+
+    use libc::types::os::arch::posix88::mode_t;
+    use super::s_ifmt::*;
+
+    #[allow(dead_code, non_camel_case_types, non_snake_case)]
+    mod ffi {
+        bindgen!("/usr/include/sys/stat.h", match="stat.h");
+    }
+
+    pub use self::ffi::{
+        umask
+    };
 
     #[inline]
     pub fn S_ISBLK(m: mode_t) -> bool {
