@@ -22,3 +22,11 @@ cargo run --example hole
 cargo run --example fileflags 1
 
 cargo run --example setfl
+
+cargo run --example filetype README.md
+
+cargo run --example access README.md
+
+cargo run --example umask
+
+cargo run --example changemod
