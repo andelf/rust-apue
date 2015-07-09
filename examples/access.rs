@@ -9,6 +9,8 @@ use std::str;
 use std::env;
 use std::mem;
 
+use apue::consts::*;
+
 
 fn main() {
     let args: Vec<CString> = env::args_os().map(|s| s.to_cstring().unwrap()).collect();

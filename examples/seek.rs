@@ -4,6 +4,7 @@ extern crate apue;
 //use apue::fcntl::*;
 use apue::unistd::*;
 use apue::stdio::*;
+use apue::consts::*;
 
 fn main() {
     unsafe {

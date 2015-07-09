@@ -17,6 +17,25 @@ pub mod types {
 }
 
 pub mod consts {
+    pub use libc::consts::os::posix88::{
+        O_APPEND,
+        O_CREAT,
+        O_EXCL,
+        O_NOCTTY,
+        O_RDONLY,
+        O_RDWR,
+        O_TRUNC,
+        O_WRONLY,
+        F_OK,
+        R_OK,
+        W_OK,
+        X_OK
+    };
+    pub use libc::consts::os::posix88::{
+        STDIN_FILENO,
+        STDOUT_FILENO,
+        STDERR_FILENO
+    };
     pub use super::s_ifmt::*;
 }
 
@@ -47,15 +66,6 @@ pub mod fcntl {
 
 pub mod unistd {
     pub use libc::funcs::posix88::unistd::*;
-    pub use libc::consts::os::posix88::{
-        STDIN_FILENO,
-        STDOUT_FILENO,
-        STDERR_FILENO,
-        F_OK,
-        R_OK,
-        W_OK,
-        X_OK
-    };
 }
 
 pub mod dirent {

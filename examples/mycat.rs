@@ -4,6 +4,7 @@ extern crate apue;
 extern crate libc;
 
 use apue::unistd::*;
+use apue::consts::*;
 use libc::{
     c_char,
     size_t,
