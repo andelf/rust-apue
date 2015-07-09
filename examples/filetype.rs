@@ -3,7 +3,7 @@
 extern crate apue;
 
 use apue::stat::*;
-use std::ffi::{CString, CStr};
+use std::ffi::CString;
 use std::str;
 use std::env;
 use std::mem;
@@ -12,7 +12,7 @@ use std::mem;
 fn main() {
     let args: Vec<CString> = env::args_os().map(|s| s.to_cstring().unwrap()).collect();
     for arg in args[1..].iter() {
-        print!("{:?}: ", arg);
+        print!("{}: ", str::from_utf8(arg.as_bytes()).unwrap());
 
         unsafe {
             let mut buf: stat = mem::zeroed();

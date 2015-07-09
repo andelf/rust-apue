@@ -117,7 +117,7 @@ pub mod stdio {
     }
 }
 
-#[allow(non_snake_case)]
+#[allow(non_snake_case, overflowing_literals)]
 pub mod stat {
     pub use libc::funcs::posix88::stat_::*;
     pub use libc::types::os::arch::posix01::stat;
