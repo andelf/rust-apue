@@ -11,7 +11,7 @@ Programs from the APUE Book(Advanced Programming in the UNIX® Environment).
 - [x] Chapter 1: intro
 - [x] Chapter 2: no file :()
 - [x] Chapter 3: fileio
-- [ ] Chapter 3: filedir
+- [ ] Chapter 4: filedir
 - [ ] TODO
 
 ## List

@@ -46,7 +46,11 @@ pub mod unistd {
     pub use libc::consts::os::posix88::{
         STDIN_FILENO,
         STDOUT_FILENO,
-        STDERR_FILENO
+        STDERR_FILENO,
+        F_OK,
+        R_OK,
+        W_OK,
+        X_OK
     };
 }
 
@@ -110,5 +114,74 @@ pub mod stdio {
     #[inline]
     pub unsafe fn putc(c: c_int, stream: *mut FILE) -> c_int {
         fputc(c, stream)
+    }
+}
+
+#[allow(non_snake_case)]
+pub mod stat {
+    pub use libc::funcs::posix88::stat_::*;
+    pub use libc::types::os::arch::posix01::stat;
+    pub use libc::funcs::posix01::stat_::lstat;
+    pub use libc::types::os::arch::posix88::mode_t;
+    pub use libc::consts::os::posix88::{
+        S_IEXEC,
+        S_IFBLK,
+        S_IFCHR,
+        S_IFDIR,
+        S_IFIFO,
+        S_IFLNK,
+        S_IFMT,
+        S_IFREG,
+        S_IREAD,
+        S_IRGRP,
+        S_IROTH,
+        S_IRUSR,
+        S_IRWXG,
+        S_IRWXO,
+        S_IRWXU,
+        S_IWGRP,
+        S_IWOTH,
+        S_IWRITE,
+        S_IWUSR,
+        S_IXGRP,
+        S_IXOTH,
+        S_IXUSR,
+    };
+
+    pub const S_IFSOCK: mode_t = 0140000;
+
+    #[inline]
+    pub fn S_ISBLK(m: mode_t) -> bool {
+        (((m) & S_IFMT) == S_IFBLK)     /* block special */
+    }
+
+    #[inline]
+    pub fn S_ISCHR(m: mode_t) -> bool {
+        (((m) & S_IFMT) == S_IFCHR)     /* char special */
+    }
+
+    #[inline]
+    pub fn S_ISDIR(m: mode_t) -> bool {
+        (((m) & S_IFMT) == S_IFDIR)     /* directory */
+    }
+
+    #[inline]
+    pub fn S_ISFIFO(m: mode_t) -> bool {
+        (((m) & S_IFMT) == S_IFIFO)     /* fifo or socket */
+    }
+
+    #[inline]
+    pub fn S_ISREG(m: mode_t) -> bool {
+        (((m) & S_IFMT) == S_IFREG)     /* regular file */
+    }
+
+    #[inline]
+    pub fn S_ISLNK(m: mode_t) -> bool {
+        (((m) & S_IFMT) == S_IFLNK)     /* symbolic link */
+    }
+
+    #[inline]
+    pub fn S_ISSOCK(m: mode_t) -> bool {
+        (((m) & S_IFMT) == S_IFSOCK)    /* socket */
     }
 }
