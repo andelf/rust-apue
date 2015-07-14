@@ -132,7 +132,9 @@ pub mod stdio {
 }
 
 
-
+pub mod string {
+    pub use libc::funcs::c95::string::*;
+}
 
 #[allow(non_snake_case, overflowing_literals)]
 mod s_ifmt {
