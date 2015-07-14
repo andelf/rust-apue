@@ -7,7 +7,6 @@ use apue::fcntl::*;
 use std::ffi::CString;
 use std::str;
 use std::env;
-use std::mem;
 
 use apue::consts::*;
 

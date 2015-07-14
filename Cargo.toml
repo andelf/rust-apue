@@ -12,7 +12,6 @@ keywords = [
 license = "MIT"
 
 [dependencies]
-nix = "*"
 libc = "*"
 
 [dependencies.bindgen_plugin]
